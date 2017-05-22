@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Grab Microblog's home</title>
+    <link rel="stylesheet"
+          type="text/css"
+          th:href="@{/resources/static/page.css}" />
+
+    <link rel="stylesheet" type="text/css"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+<body>
+    <div id="header" th:include="page::header"></div>
+
+    <h1>Welcome to grab micro blogs' home</h1>
+
+    <!--<nav class="navbar navbar-inverse">-->
+        <!--<div class="container">-->
+            <!--<div class="navbar-header">-->
+                <!--<a class="navbar-brand" href="#">Spring Boot</a>-->
+            <!--</div>-->
+            <!--<div id="navbar" class="collapse navbar-collapse">-->
+                <!--<ul class="nav navbar-nav">-->
+                    <!--<li class="active"><a href="#">Home</a></li>-->
+                    <!--<li><a href="#about">About</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</nav>-->
+
+    <!--TODO login to grab the user surfed before-->
+    <!--TODO sign up use email sounds great-->
+    <!--TODO grab just randomly grab things-->
+    <a th:href="@{/users/login}">sign in</a>
+    <a th:href="@{/users/regesiter}">sign up</a>
+    <a th:href="@{/grab}">Shut up,I just want to grab things</a><br/>
+
+    <div id="footer" th:include="page::copy"></div>
+</body>
+</html>
