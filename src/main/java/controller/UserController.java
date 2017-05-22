@@ -3,7 +3,9 @@ package controller;
 import data.User;
 import data.UserRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,6 +32,13 @@ public class UserController {
 
         userRepository.save(user);
         return "redirect:/user/"+user.getUserName();
+    }
+
+    @RequestMapping("/{userName")
+    public String showUserProfile(@PathVariable String userName,Model model){
+        User user=userRepository.findByUsername(userName);
+        model.addAttribute(user);
+        return "profile";
     }
 
 }
