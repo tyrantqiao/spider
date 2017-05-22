@@ -5,7 +5,7 @@
     <title>Login</title>
 </head>
 <body>
-    <div id="header" th:include="page :: header"></div>
+    <div class="header" th:include="page::header"></div>
 
     <h1>I want to go the home page instead of logging</h1>
         <a th:href="@{/home}">home page</a><br/>
@@ -32,6 +32,6 @@
         </form>
     </div>
 
-    <div id="footer" th:include="page :: copy"></div>
+    <div class="footer" th:include="page::copy"></div>
 </body>
 </html>

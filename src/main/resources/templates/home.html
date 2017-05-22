@@ -5,14 +5,14 @@
     <title>Grab Microblog's home</title>
     <link rel="stylesheet"
           type="text/css"
-          th:href="@{/resources/static/page.css}" />
+          th:href="@{/static/page.css}" />
 
     <link rel="stylesheet" type="text/css"
           href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 
 </head>
 <body>
-    <div id="header" th:include="page::header"></div>
+    <div th:include="page::header" ></div>
 
     <h1>Welcome to grab micro blogs' home</h1>
 
@@ -37,6 +37,6 @@
     <a th:href="@{/users/regesiter}">sign up</a>
     <a th:href="@{/grab}">Shut up,I just want to grab things</a><br/>
 
-    <div id="footer" th:include="page::copy"></div>
+    <div th:include="page::copy"></div>
 </body>
 </html>

@@ -1,3 +1,9 @@
-div{
-    color: red;
+div.header{
+    top: 0;
+    color:orange;
+}
+
+div.footer{
+    bottom:0;
+    color:grey;
 }
