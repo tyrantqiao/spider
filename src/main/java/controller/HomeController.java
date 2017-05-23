@@ -13,7 +13,6 @@ import javax.annotation.Resource;
 public class HomeController {
     @RequestMapping("/")
     public String home(){
-
         return "home";
     }
 }

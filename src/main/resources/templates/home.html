@@ -33,8 +33,9 @@
     <!--TODO login to grab the user surfed before-->
     <!--TODO sign up use email sounds great-->
     <!--TODO grab just randomly grab things-->
-    <a th:href="@{/users/login}">sign in</a>
-    <a th:href="@{/users/regesiter}">sign up</a>
+    <!--It's too troublesome to change the url to the controller and the page 'html',need a new way-->
+    <a th:href="@{/user/register}">sign up</a>
+    <a th:href="@{/user/login}">sign in</a>
     <a th:href="@{/grab}">Shut up,I just want to grab things</a><br/>
 
     <div th:class="footer" th:include="page::copy"></div>

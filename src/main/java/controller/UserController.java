@@ -2,6 +2,10 @@ package controller;
 
 import data.User;
 import data.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -17,26 +21,28 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    @Autowired
     private UserRepository userRepository;
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public String loginPage(){
-        return "login";
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
+    public String registerPage(Model model){
+        model.addAttribute(new User());
+        return "register";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String processLogin(@Valid User user,Errors errors){
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    public String processRegister(@Valid User user,Errors errors){
         if(errors.hasErrors()){
-            return "/login";
+            return "/register";
         }
 
         userRepository.save(user);
-        return "redirect:/user/"+user.getUserName();
+        return "redirect:/user/"+user.getUsername();
     }
 
-    @RequestMapping("/{userName")
-    public String showUserProfile(@PathVariable String userName,Model model){
-        User user=userRepository.findByUsername(userName);
+    @RequestMapping("/{username}")
+    public String showUserProfile(@PathVariable String username,Model model){
+        User user=userRepository.findByUsername(username);
         model.addAttribute(user);
         return "profile";
     }
