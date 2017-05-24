@@ -1,6 +1,7 @@
 package data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -12,8 +13,8 @@ import java.sql.SQLException;
  * Created by GeoLin on 2017/5/23.
  */
 //TODO May 23th, configure datasource with h2, should change to MySQL
-@Repository
-public class JdbcUserRepository implements UserRepository{
+@NoRepositoryBean
+public class JdbcUserRepository implements UserRepository {
     private JdbcOperations jdbcOperations;
 
     @Autowired

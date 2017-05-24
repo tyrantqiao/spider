@@ -2,6 +2,7 @@ package data;
 
 import org.hibernate.validator.constraints.Email;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Random;
@@ -9,6 +10,8 @@ import java.util.Random;
 /**
  * Created by GeoLin on 2017/5/21.
  */
+
+@Entity
 public class User {
     private long id;
 

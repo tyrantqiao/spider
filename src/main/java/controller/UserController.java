@@ -1,5 +1,6 @@
 package controller;
 
+import data.JdbcUserRepository;
 import data.User;
 import data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
-    private UserRepository userRepository;
+    private JdbcUserRepository userRepository;
+//    TODO Repository how to inject, make it not null...CrudRepository.interface seems well
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String registerPage(Model model){
