@@ -21,8 +21,14 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/user")
+@ComponentScan(basePackages = {"data"})
 public class UserController {
-    private JdbcUserRepository userRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    public UserController(UserRepository userRepository){
+        this.userRepository=userRepository;
+    }
 //    TODO Repository how to inject, make it not null...CrudRepository.interface seems well
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
@@ -34,7 +40,8 @@ public class UserController {
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String processRegister(@Valid User user,Errors errors){
         if(errors.hasErrors()){
-            return "/register";
+            System.out.println("got error");
+            return "/error";
         }
 
         userRepository.save(user);

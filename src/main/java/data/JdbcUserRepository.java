@@ -1,9 +1,14 @@
 package data;
 
+import controller.UserController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.data.repository.RepositoryDefinition;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
@@ -13,17 +18,22 @@ import java.sql.SQLException;
  * Created by GeoLin on 2017/5/23.
  */
 //TODO May 23th, configure datasource with h2, should change to MySQL
-@NoRepositoryBean
+//@Repository
 public class JdbcUserRepository implements UserRepository {
-    private JdbcOperations jdbcOperations;
+    private JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    public JdbcUserRepository(JdbcOperations jdbcOperations){
-        this.jdbcOperations=jdbcOperations;
+    public JdbcUserRepository(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate=jdbcTemplate;
     }
 
+//    private jdbcTemplate jdbcTemplate;
+//    @Autowired
+//    public JdbcUserRepository(jdbcTemplate jdbcTemplate){
+//        this.jdbcTemplate=jdbcTemplate;
+//    }
+
     public User save(User user){
-        jdbcOperations.update("insert into user(username,password,email)"
+        jdbcTemplate.update("insert into PUBLIC.USER(username,password,email)"
                                     +"VALUES(?,?,?)",
                                         user.getUsername(),
                                         user.getPassword(),
@@ -32,8 +42,8 @@ public class JdbcUserRepository implements UserRepository {
     }
 
     public User findByUsername(String username){
-        return jdbcOperations.queryForObject(
-                "select id, username, null, email from User where username=?",
+        return jdbcTemplate.queryForObject(
+                "select id, username, null, email from PUBLIC.USER where username=?",
                 new UserRowMapper(),
                 username);
     }
