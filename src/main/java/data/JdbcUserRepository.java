@@ -43,9 +43,10 @@ public class JdbcUserRepository implements UserRepository {
 
     public User findByUsername(String username){
         return jdbcTemplate.queryForObject(
-                "select id, username, null, email from PUBLIC.USER where username=?",
+                "select id, username, password, email from PUBLIC.USER where username=?",
                 new UserRowMapper(),
                 username);
+        //(A--sql,B--RowMapper,C--supplement for A)
     }
 
     private class UserRowMapper implements RowMapper<User>{
@@ -53,7 +54,8 @@ public class JdbcUserRepository implements UserRepository {
             return new User(
                     resultSet.getLong("id"),
                     resultSet.getString("username"),
-                    null,
+//                    null,
+                    resultSet.getString("password"),
                     resultSet.getString("email"));
         }
     }

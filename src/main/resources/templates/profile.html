@@ -10,9 +10,12 @@
 <div id="header" th:include="page :: header"></div>
 
 <div id="content">
+    <a th:href="@{/user/login}">login your account</a>
+
     <h1>Your Profile</h1>
     <span th:text="${user.username}">username</span><br/>
-    <span th:text="${user.email}">email</span>
+    <span th:text="${user.email}">email</span><br/>
+    <span th:text="${user.password}">password</span>
 </div>
 
 <div id="footer" th:include="page :: copy"></div>

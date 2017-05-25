@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>sign in</title>
+</head>
+<body>
+    <div class="header" th:include="page::header"></div>
+
+    <h1>I want to go the home page instead of registering</h1>
+    <a th:href="@{/home}">home page</a><br/>
+
+    <b>login your account, to see what u had searched before, or grab the thing as your habit before</b>
+        <div id="content">
+            <h1>Register</h1>
+            <form method="post" th:object="${user}">
+                <div class="errors" th:if="${#fields.hasErrors('*')}">
+                    <ul>
+                        <li th:each="err:${#fields.errors('*')}"
+                            th:text="${err}">Input is error</li>
+                    </ul>
+                </div>
+                <label th:class="${#fields.hasErrors('username')}? 'error'">username</label>
+                <input type="text" th:field="*{username}"
+                       th:class="${#fields.hasErrors('username')}? 'error'" /><br/>
+
+                <label th:class="${#fields.hasErrors('password')}? 'error'">password</label>
+                <input type="text" th:field="*{password}"
+                       th:class="${#fields.hasErrors('password')}? 'error'" /><br/>
+                <input type="submit" value="login" />
+            </form>
+        </div>
+
+    <div class="footer" th:include="page::copy"></div>
+</body>
+</html>

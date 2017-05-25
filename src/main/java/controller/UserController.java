@@ -55,4 +55,33 @@ public class UserController {
         return "profile";
     }
 
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    public String login(Model model){
+        model.addAttribute(new User());
+        return "/login";
+    }
+
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public String processLogin(@Valid User user,Errors errors){
+        if(errors.hasErrors()){
+            System.out.println("input type's error");
+            return "/login";
+        }
+        User searchUser;
+        try {
+            searchUser = userRepository.findByUsername(user.getUsername());
+            //cannot use == to discuss the string thing
+            if(!searchUser.getPassword().equals(user.getPassword())) {
+                System.out.println("search:"+searchUser.getPassword());
+                System.out.println("user:"+user.getPassword());
+                return "/register";
+            }
+        }catch(Exception e){
+            System.out.println("Exception, might be not catch the thing");
+            return "/error";
+        }
+        //TODO make the actual error message
+
+        return "redirect:/user/"+searchUser.getUsername();
+    }
 }
