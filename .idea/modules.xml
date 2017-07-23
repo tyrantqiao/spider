@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/grabMicroblog.iml" filepath="$PROJECT_DIR$/grabMicroblog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grabing.iml" filepath="$PROJECT_DIR$/grabing.iml" />
     </modules>
   </component>
 </project>
