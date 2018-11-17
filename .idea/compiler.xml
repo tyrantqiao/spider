@@ -7,10 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="grabing" />
         <module name="grabMicroblog" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="grabing" target="1.5" />
       <module name="grabMicroblog" target="1.8" />
     </bytecodeTargetLevel>
   </component>
